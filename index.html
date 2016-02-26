@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="pathways">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pathways</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><!-- load jquery -->
+	<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+    <script src="js/core.js"></script>
+	<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"><!-- load bootstrap -->
+	<style type="text/css">
+		#ladderTitle {
+			font-size: 1.5em;
+			font-family: sans-serif;
+		}
+	</style>
+</head>
+<body ng-controller="mainCtrl">
+	<div class="container-fluid">
+		<div class="well">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="well col-sm-12">
+						<a href="#" editable-text="ladderName" id="ladderTitle" onbeforesave="updateTitle($data)">{{ladderName || 'LadderTitle'}}</a>
+					</div>
+					<div class="well col-sm-12">
+						<a href="#" editable-text="startOccupation" id="startOccupation" onbeforesave="updateStartOccupation($data)">{{startOccupation || 'Start Occupation'}}</a>
+					</div>
+					<div class="well col-sm-12">
+						<a href="#">Add Pathway</a>
+					</div>
+				</div>	
+				<div class="col-sm-8">
+					<p>Here is the chart!</p>
+				</div>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

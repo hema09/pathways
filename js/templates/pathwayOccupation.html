@@ -1,0 +1,26 @@
+<table class="table table-bordered table-hover table-condensed">
+	<tr style="font-weight:bold;">
+		<td style="width: 40%">Occupation</td>
+		<td style="width: 30%">Level</td>
+		<td style="width: 30%">Edit</td>
+	</tr>
+	<tr ng-repeat="occupation in occupations">
+		<td>
+			<span editable-text="occupation.name" e-name="name" e-form="rowform" e-required>{{occupation.name || 'empty'}}</span>
+		</td>
+		<td>
+			<span editable-select="occupation.level" e-name="level" e-form="rowform" e-ng-options="l.value as l.text for l in levels">{{showOccLevel({occupation : occupation})}}</span>
+		</td>				
+		<td style="white-space: nowrap">
+			<form editable-form name="rowform" class="form-buttons form-inline" ng-show="rowform.$visible" onbeforesave="saveOccupation($data, occupation.id)">
+				<button type="submit" class="btn btn-primary">Save</button>
+				<button type="button" ng-click="rowform.$cancel()" class="btn btn-default">Cancel</button>
+			</form>
+			<div ng-show="!rowform.$visible">
+				<button class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+				<button class="btn btn-danger" ng-click="removeOccupation({index : $index})">delete</button>
+			</div>
+		</td>
+	</tr>				
+</table>
+<button class="btn btn-default" ng-click="addOccupation()">Add Row</button>

@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<title>Modal</title>
+	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script><!-- load angular -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.10.0.js"></script>
+	<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+	<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"><!-- load bootstrap -->
+	<script src="js/tableEdit.js"></script>
+	<script src="js/directives.js"></script>
+	<script src="js/services.js"></script>
+
+</head>
+<body ng-app="tableEditor" ng-controller="tableCtrl">
+	<div class="container">
+	<div>
+		<h3><a href="#" editable-text="ladder.title" onbeforesave="updateLadder($data)">{{ladder.title || 'Ladder Title'}}</a></h3>
+	</div>
+	<button class="btn btn-info" ng-click="showPathways=true" ng-show="!showPathways">Add Pathways</button>
+	<table class="table" ng-show="showPathways">
+		<tr>
+			<td ng-repeat="path in ladder.pathways">	
+				<button class="btn btn-info" ng-click="pathModal(path)" data-toggle="modal">
+					<span class="pathway">{{path.title || 'set Pathway'}}</span>
+				</button>
+			</td>
+		</tr>		
+	</table>
+	<div class="well">
+		<div class="col-md-4">
+			<div>
+				<table class="table">
+					<tr ng-repeat="level in [1..5]">
+						<p>level</p>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-md-4">
+		</div>
+		<div class="col-md-4">
+		</div>
+	</div>
+	</div>	
+</body>
+</html>
